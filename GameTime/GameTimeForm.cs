@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GameTime.Core.NHL;
 using GameTime.Controls;
+using GameTime.Forms.NHL;
 namespace GameTime
 {
     public partial class GameTimeForm : Form
@@ -29,6 +30,6 @@ namespace GameTime
                 flowLayoutPanel1.Controls.Add(gameView);
             }
             this.Cursor = Cursors.Arrow;
-        }
+        }    
     }
 }

@@ -33,15 +33,16 @@
             // 
             // closeLabel
             // 
-            this.closeLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closeLabel.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeLabel.Font = new System.Drawing.Font("Arial Narrow", 7F);
             this.closeLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.closeLabel.Location = new System.Drawing.Point(59, 0);
+            this.closeLabel.Location = new System.Drawing.Point(74, 0);
             this.closeLabel.Name = "closeLabel";
-            this.closeLabel.Size = new System.Drawing.Size(32, 26);
+            this.closeLabel.Size = new System.Drawing.Size(19, 17);
             this.closeLabel.TabIndex = 0;
             this.closeLabel.Text = "X";
             this.closeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.closeLabel.Click += new System.EventHandler(this.closeLabel_Click);
             this.closeLabel.MouseEnter += new System.EventHandler(this.closeLabel_MouseEnter);
             this.closeLabel.MouseLeave += new System.EventHandler(this.closeLabel_MouseLeave);
             // 
@@ -50,10 +51,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.closeLabel);
             this.Name = "ControlBar";
-            this.Size = new System.Drawing.Size(91, 26);
+            this.Size = new System.Drawing.Size(93, 17);
             this.ResumeLayout(false);
 
         }

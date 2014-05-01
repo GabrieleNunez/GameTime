@@ -23,8 +23,8 @@ namespace GameTime.Controls
                 {
                     gameNameLabel.Text = game.ToString();
                     gameTimeLabel.Text = ConvertMilitaryToTwelve(game.Date.TimeOfDay);
-                    homeTeamPictureBox.LoadAsync(game.HomeTeam.Logo.Large);
-                    awayTeamPictureBox.LoadAsync(game.AwayTeam.Logo.Large);
+                    homeTeamPictureBox.LoadAsync(game.HomeTeam.Logo.Small);
+                    awayTeamPictureBox.LoadAsync(game.AwayTeam.Logo.Small);
                     if (game.BoxScore != null)
                     {
                         homeScore.Text = game.BoxScore.Score.Home.Score.ToString();

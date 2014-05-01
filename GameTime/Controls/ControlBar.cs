@@ -11,21 +11,33 @@ namespace GameTime.Controls
 {
     public partial class ControlBar : UserControl
     {
+        public event EventHandler ControlBarClose;
         public ControlBar()
         {
             InitializeComponent();
+            ControlBarClose += ControlBar_ControlBarClose;
+        }
+
+        void ControlBar_ControlBarClose(object sender, EventArgs e)
+        {
+            
         }
 
         private void closeLabel_MouseEnter(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Hand;
-            closeLabel.BorderStyle = BorderStyle.FixedSingle;
+            this.closeLabel.ForeColor = Color.Black;
         }
 
         private void closeLabel_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Arrow;
-            closeLabel.BorderStyle = BorderStyle.None;
+            this.closeLabel.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void closeLabel_Click(object sender, EventArgs e)
+        {
+            ControlBarClose.Invoke(this, new EventArgs());
         }
     }
 }
