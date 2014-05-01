@@ -9,13 +9,13 @@ namespace GameTime.Core.NHL
     [JsonObject("logos")]
     public class LogoUrls
     {
-        [JsonProperty("large")]
+        [JsonProperty("large", NullValueHandling = NullValueHandling.Ignore)]
         public string Large { get; set; }
 
-        [JsonProperty("small")]
+        [JsonProperty("small", NullValueHandling = NullValueHandling.Ignore)]
         public string Small { get; set; }
 
-        [JsonProperty("tiny")]
+        [JsonProperty("tiny", NullValueHandling = NullValueHandling.Ignore)]
         public string Tiny { get; set; }
     }
 }

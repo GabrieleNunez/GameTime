@@ -8,13 +8,13 @@ namespace GameTime.Core.NHL
     [JsonObject("top_match")]
     public class TopMatch
     {
-        [JsonProperty("priority")]
+        [JsonProperty("priority", NullValueHandling = NullValueHandling.Ignore)]
         public string Priority { get; set; }
 
-        [JsonProperty("description")]
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
-        [JsonProperty("note")]
+        [JsonProperty("note", NullValueHandling = NullValueHandling.Ignore)]
         public string Note { get; set; }
     }
 }

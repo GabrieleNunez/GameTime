@@ -7,37 +7,37 @@ namespace GameTime.Core.NHL
 {
     public class Team
     {
-        [JsonProperty("abbreviation")]
+        [JsonProperty("abbreviation", NullValueHandling = NullValueHandling.Ignore)]
         public string Abbreviation { get; set; }
 
-        [JsonProperty("full_name")]
+        [JsonProperty("full_name", NullValueHandling = NullValueHandling.Ignore)]
         public string FullName { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public int Id { get; set; }
 
-        [JsonProperty("location")]
+        [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
         public string Location { get; set; }
 
-        [JsonProperty("acroynm")]
+        [JsonProperty("acroynm", NullValueHandling = NullValueHandling.Ignore)]
         public string Acroynm { get; set; }
 
-        [JsonProperty("conference")]
+        [JsonProperty("conference", NullValueHandling = NullValueHandling.Ignore)]
         public string Conference { get; set; }
 
-        [JsonProperty("divison")]
+        [JsonProperty("divison", NullValueHandling = NullValueHandling.Ignore)]
         public string Division { get; set; }
 
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime LastUpdate { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("injuries")]
+        [JsonProperty("injuries", NullValueHandling = NullValueHandling.Ignore)]
         public bool HasInjuredPlayers { get; set; }
 
-        [JsonProperty("logos")]
+        [JsonProperty("logos", NullValueHandling = NullValueHandling.Ignore)]
         public LogoUrls Logo { get; set; }
 
         public override string ToString()

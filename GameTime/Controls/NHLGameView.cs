@@ -38,6 +38,15 @@ namespace GameTime.Controls
                 }
             }
         }
+        public NHLGameView()
+            : this(null)
+        {
+        }
+        public NHLGameView(Game nhlGame)
+        {
+            InitializeComponent();
+            Game = nhlGame;
+        }
         private string ConvertMilitaryToTwelve(TimeSpan timeSpan)
         {
             int hour = 0;
@@ -49,13 +58,7 @@ namespace GameTime.Controls
                 hour = 12;
             else
                 hour = timeSpan.Hours;
-            return string.Format("{0}:{1} {2}", hour, timeSpan.Minutes, isPm ? "pm": "am");
-        }
-        public NHLGameView(Game nhlGame)
-        {
-            InitializeComponent();
-            Game = nhlGame;
-
+            return string.Format("{0}:{1} {2}", hour, timeSpan.Minutes, isPm ? "pm" : "am");
         }
         protected override void OnPaint(PaintEventArgs e)
         {

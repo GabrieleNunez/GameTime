@@ -8,31 +8,31 @@ namespace GameTime.Core.NHL
     [JsonObject("progress")]
     public class GameProgress
     {
-        [JsonProperty("clock_label")]
+        [JsonProperty("clock_label", NullValueHandling = NullValueHandling.Ignore)]
         public string ClockLabel { get; set; }
 
-        [JsonProperty("string")]
+        [JsonProperty("string", NullValueHandling = NullValueHandling.Ignore)]
         public string String { get; set; }
 
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
-        [JsonProperty("event_status")]
+        [JsonProperty("event_status", NullValueHandling = NullValueHandling.Ignore)]
         public string EventStatus { get; set; }
 
-        [JsonProperty("segment")]
+        [JsonProperty("segment",NullValueHandling= NullValueHandling.Ignore)]
         public int Segment { get; set; }
 
-        [JsonProperty("segment_string")]
+        [JsonProperty("segment_string", NullValueHandling = NullValueHandling.Ignore)]
         public string SegmentString { get; set; }
 
-        [JsonProperty("segment_description")]
+        [JsonProperty("segment_description", NullValueHandling = NullValueHandling.Ignore)]
         public string SegmentDescription { get; set; }
 
-        [JsonProperty("clock")]
+        [JsonProperty("clock", NullValueHandling = NullValueHandling.Ignore)]
         public string Clock { get; set; }
 
-        [JsonProperty("overtime")]
+        [JsonProperty("overtime", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsOvertime { get; set; }
     }
 }

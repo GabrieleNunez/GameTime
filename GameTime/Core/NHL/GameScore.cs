@@ -9,19 +9,19 @@ namespace GameTime.Core.NHL
     [JsonObject("score")]
     public class GameScore
     {
-        [JsonProperty("home")]
+        [JsonProperty("home", NullValueHandling = NullValueHandling.Ignore)]
         public TeamScore Home { get; set; }
 
-        [JsonProperty("away")]
+        [JsonProperty("away", NullValueHandling = NullValueHandling.Ignore)]
         public TeamScore Away { get; set; }
 
-        [JsonProperty("winning_team")]
+        [JsonProperty("winning_team", NullValueHandling = NullValueHandling.Ignore)]
         public string WinningTeam { get; set; }
 
-        [JsonProperty("losing_team")]
+        [JsonProperty("losing_team", NullValueHandling = NullValueHandling.Ignore)]
         public string LosingTeam { get; set; }
 
-        [JsonProperty("tie_game")]
+        [JsonProperty("tie_game", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsTie { get; set; }
     }
 }

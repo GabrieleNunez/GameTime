@@ -53,6 +53,12 @@
     <Compile Include="Controls\NHLGameView.Designer.cs">
       <DependentUpon>NHLGameView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ControlBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlBar.Designer.cs">
+      <DependentUpon>ControlBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\NHL\BoxScore.cs" />
     <Compile Include="Core\NHL\Game.cs" />
     <Compile Include="Core\NHL\GameProgress.cs" />
@@ -62,6 +68,12 @@
     <Compile Include="Core\NHL\NHLGameGrabber.cs" />
     <Compile Include="Core\NHL\TeamScore.cs" />
     <Compile Include="Core\GameGrabber.cs" />
+    <Compile Include="Forms\NHL\GameUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NHL\GameUpdateForm.Designer.cs">
+      <DependentUpon>GameUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameTimeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +84,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\NHL\Team.cs" />
     <Compile Include="Core\NHL\TopMatch.cs" />
+    <EmbeddedResource Include="Controls\ControlBar.resx">
+      <DependentUpon>ControlBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\NHLGameView.resx">
       <DependentUpon>NHLGameView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NHL\GameUpdateForm.resx">
+      <DependentUpon>GameUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameTimeForm.resx">
       <DependentUpon>GameTimeForm.cs</DependentUpon>

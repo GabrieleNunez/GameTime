@@ -4,49 +4,49 @@ namespace GameTime.Core.NHL
 {
     public class Game
     {
-        [JsonProperty("game_date")]
+        [JsonProperty("game_date", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime Date { get; set; }
 
-        [JsonProperty("game_type")]
+        [JsonProperty("game_type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
-        [JsonProperty("tba")]
+        [JsonProperty("tba", NullValueHandling = NullValueHandling.Ignore)]
         public bool Tba { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public int Id { get; set; }
 
-        [JsonProperty("event_status")]
+        [JsonProperty("event_status", NullValueHandling = NullValueHandling.Ignore)]
         public string EventStatus { get; set; }
 
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime LastUpdate { get; set; }
 
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
-        [JsonProperty("away_team")]
+        [JsonProperty("away_team", NullValueHandling = NullValueHandling.Ignore)]
         public Team AwayTeam { get; set; }
 
-        [JsonProperty("home_team")]
+        [JsonProperty("home_team", NullValueHandling = NullValueHandling.Ignore)]
         public Team HomeTeam { get; set; }
 
-        [JsonProperty("top_match")]
+        [JsonProperty("top_match", NullValueHandling = NullValueHandling.Ignore)]
         public TopMatch TopMatch { get; set; }
 
-        [JsonProperty("league")]
+        [JsonProperty("league", NullValueHandling = NullValueHandling.Ignore)]
         public League League { get; set; }
 
-        [JsonProperty("location")]
+        [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
         public string Location { get; set; }
 
-        [JsonProperty("stadium")]
+        [JsonProperty("stadium", NullValueHandling = NullValueHandling.Ignore)]
         public string Stadium { get; set; }
 
-        [JsonProperty("total_periods")]
+        [JsonProperty("total_periods", NullValueHandling = NullValueHandling.Ignore)]
         public string Periods { get; set; }
 
-        [JsonProperty("box_score")]
+        [JsonProperty("box_score", NullValueHandling = NullValueHandling.Ignore)]
         public BoxScore BoxScore { get; set; }
 
         private int StringToId(string team)

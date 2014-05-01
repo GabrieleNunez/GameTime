@@ -41,12 +41,12 @@
             // 
             // gameNameLabel
             // 
-            this.gameNameLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.gameNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.gameNameLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.gameNameLabel.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameNameLabel.Location = new System.Drawing.Point(0, 0);
             this.gameNameLabel.Name = "gameNameLabel";
-            this.gameNameLabel.Size = new System.Drawing.Size(432, 29);
+            this.gameNameLabel.Size = new System.Drawing.Size(434, 29);
             this.gameNameLabel.TabIndex = 0;
             this.gameNameLabel.Text = "Game Name Here";
             this.gameNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,7 +56,7 @@
             this.gameTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gameTimeLabel.AutoSize = true;
-            this.gameTimeLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.gameTimeLabel.BackColor = System.Drawing.Color.Transparent;
             this.gameTimeLabel.Font = new System.Drawing.Font("Verdana", 12F);
             this.gameTimeLabel.Location = new System.Drawing.Point(347, 9);
             this.gameTimeLabel.Name = "gameTimeLabel";
@@ -67,7 +67,6 @@
             // 
             // homeTeamPictureBox
             // 
-            this.homeTeamPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.homeTeamPictureBox.Location = new System.Drawing.Point(20, 46);
             this.homeTeamPictureBox.Name = "homeTeamPictureBox";
             this.homeTeamPictureBox.Size = new System.Drawing.Size(128, 128);
@@ -77,7 +76,6 @@
             // 
             // awayTeamPictureBox
             // 
-            this.awayTeamPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.awayTeamPictureBox.Location = new System.Drawing.Point(292, 46);
             this.awayTeamPictureBox.Name = "awayTeamPictureBox";
             this.awayTeamPictureBox.Size = new System.Drawing.Size(128, 128);
@@ -90,7 +88,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(204, 93);
             this.label1.Name = "label1";
@@ -104,7 +102,7 @@
             this.homeScore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.homeScore.AutoSize = true;
-            this.homeScore.BackColor = System.Drawing.SystemColors.Control;
+            this.homeScore.BackColor = System.Drawing.Color.Transparent;
             this.homeScore.Font = new System.Drawing.Font("Verdana", 10F);
             this.homeScore.Location = new System.Drawing.Point(74, 193);
             this.homeScore.Name = "homeScore";
@@ -118,7 +116,7 @@
             this.awayScore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.awayScore.AutoSize = true;
-            this.awayScore.BackColor = System.Drawing.SystemColors.Control;
+            this.awayScore.BackColor = System.Drawing.Color.Transparent;
             this.awayScore.Font = new System.Drawing.Font("Verdana", 10F);
             this.awayScore.Location = new System.Drawing.Point(347, 193);
             this.awayScore.Name = "awayScore";
@@ -131,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.awayScore);
             this.Controls.Add(this.homeScore);
             this.Controls.Add(this.label1);
@@ -140,7 +138,7 @@
             this.Controls.Add(this.gameTimeLabel);
             this.Controls.Add(this.gameNameLabel);
             this.Name = "NHLGameView";
-            this.Size = new System.Drawing.Size(432, 218);
+            this.Size = new System.Drawing.Size(434, 220);
             ((System.ComponentModel.ISupportInitialize)(this.homeTeamPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.awayTeamPictureBox)).EndInit();
             this.ResumeLayout(false);

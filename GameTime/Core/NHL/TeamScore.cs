@@ -7,7 +7,7 @@ namespace GameTime.Core.NHL
 {
     public class TeamScore
     {
-        [JsonProperty("score")]
+        [JsonProperty("score", NullValueHandling = NullValueHandling.Ignore)]
         public int Score { get; set; }
     }
 }

@@ -24,7 +24,15 @@ namespace GameTime.Core.NHL
             games = null;
             using (WebClient client = new WebClient())
             {
-                games = JsonConvert.DeserializeObject<Game[]>(client.DownloadString(ScoreUrl));
+                string json = client.DownloadString(ScoreUrl);
+                try
+                {
+                    games = JsonConvert.DeserializeObject<Game[]>(json);
+                }
+                catch (Newtonsoft.Json.JsonSerializationException ex)
+                {
+                    throw new Exception("Failed to deserialize", ex);
+                }
             }
         }
     }
