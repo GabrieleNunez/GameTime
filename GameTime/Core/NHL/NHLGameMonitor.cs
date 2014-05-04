@@ -11,16 +11,18 @@ namespace GameTime.Core.NHL
 
     public class NHLGameMonitor : IDisposable
     {
-        private const int DEFAULT_INTERVAL = 5000;
+        private const int DEFAULT_INTERVAL = 10000;
 
+        private bool isRunning = false;
         private Timer monitorTimer;
         private NHLGameGrabber gameGrabber;
         private Dictionary<int, DateTime> gameUpdateTimes;
         
         public NHLGameGrabber Grabber { get { return gameGrabber; } }
         public Dictionary<int, DateTime> UpdateTimes { get { return gameUpdateTimes; } }
-
         public int WatchingCount { get { return gameUpdateTimes.Values.Count; } }
+
+        public bool IsRunning { get { return isRunning; } }
 
         public event NHLGameHandler GameUpdated;
 
@@ -55,35 +57,48 @@ namespace GameTime.Core.NHL
         {
             Debug.WriteLine("Pulsing");
             gameGrabber.UpdateGames();
+            List<Game> updates = new List<Game>();
             if (gameGrabber.Games.Length > 0)
             {
-                foreach (int id in gameUpdateTimes.Keys)
+                if (gameUpdateTimes.Keys.Count > 0)
                 {
-                    Game game = IdMatch(id);
-                    Debug.WriteLine(game.ToString());
-                    if (game != null)
+                    foreach (int id in gameUpdateTimes.Keys)
                     {
-                        if (game.LastUpdate != gameUpdateTimes[id] && game.LastUpdate > gameUpdateTimes[id])
+                        Game game = IdMatch(id);
+                        Debug.WriteLine(game.ToString());
+                        if (game != null)
                         {
-                            Debug.WriteLine("Attempting to modify");
-                            gameUpdateTimes[id] = game.LastUpdate;
-                            Debug.WriteLine("Success");
-                            if (GameUpdated != null)
-                                GameUpdated.Invoke(game);
+                            if (game.LastUpdate != gameUpdateTimes[id] && game.LastUpdate > gameUpdateTimes[id])
+                            {
+                                Debug.WriteLine("Attempting to modify");
+                                updates.Add(game);
+                                Debug.WriteLine("Success");
+                            }
                         }
                     }
                 }
-
+                else
+                {
+                    updates.AddRange(gameGrabber.Games);
+                }
+            }
+            foreach (Game game in updates)
+            {
+                gameUpdateTimes[game.Id] = game.LastUpdate;
+                if (GameUpdated != null)
+                    GameUpdated.Invoke(game);
             }
         }
         public void Begin()
         {
+            isRunning = true;
             gameGrabber.UpdateGames();
             monitorTimer.Start();
         }
         public void End()
         {
             monitorTimer.Stop();
+            isRunning = false;
         }
         public void Watch(int id)
         {

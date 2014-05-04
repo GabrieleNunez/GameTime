@@ -22,7 +22,7 @@ namespace GameTime.Controls
                 if (game != null)
                 {
                     gameNameLabel.Text = game.ToString();
-                    gameTimeLabel.Text = ConvertMilitaryToTwelve(game.Date.TimeOfDay);
+                    gameTimeLabel.Text = Util.MilitaryToTwelve(game.Date.TimeOfDay);
                     homeTeamPictureBox.LoadAsync(game.HomeTeam.Logo.Small);
                     awayTeamPictureBox.LoadAsync(game.AwayTeam.Logo.Small);
                     if (game.BoxScore != null)
@@ -47,19 +47,7 @@ namespace GameTime.Controls
             InitializeComponent();
             Game = nhlGame;
         }
-        private string ConvertMilitaryToTwelve(TimeSpan timeSpan)
-        {
-            int hour = 0;
-            bool isPm = false;
-            isPm = timeSpan.Hours >= 12 && timeSpan.Hours != 24;
-            if (isPm && timeSpan.Hours != 12)
-                hour = (timeSpan.Hours - 12);
-            else if (timeSpan.Hours == 12 || timeSpan.Hours == 24)
-                hour = 12;
-            else
-                hour = timeSpan.Hours;
-            return string.Format("{0}:{1} {2}", hour, timeSpan.Minutes, isPm ? "pm" : "am");
-        }
+       
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);

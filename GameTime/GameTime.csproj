@@ -72,34 +72,18 @@
     <Compile Include="Core\NHL\NHLGameMonitor.cs" />
     <Compile Include="Core\NHL\TeamScore.cs" />
     <Compile Include="Core\GameGrabber.cs" />
-    <Compile Include="GUI\NHL\GameUpdateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\NHL\GameUpdateForm.Designer.cs">
-      <DependentUpon>GameUpdateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GameTimeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GameTimeForm.Designer.cs">
-      <DependentUpon>GameTimeForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\NHL\NHLNotificationManager.cs" />
+    <Compile Include="DesktopWallpaper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\NHL\Team.cs" />
     <Compile Include="Core\NHL\TopMatch.cs" />
+    <Compile Include="Renderer.cs" />
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="Controls\ControlBar.resx">
       <DependentUpon>ControlBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\NHLGameView.resx">
       <DependentUpon>NHLGameView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\NHL\GameUpdateForm.resx">
-      <DependentUpon>GameUpdateForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GameTimeForm.resx">
-      <DependentUpon>GameTimeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
