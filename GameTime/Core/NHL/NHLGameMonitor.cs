@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Timers;
@@ -15,7 +16,7 @@ namespace GameTime.Core.NHL
         private Timer monitorTimer;
         private NHLGameGrabber gameGrabber;
         private Dictionary<int, DateTime> gameUpdateTimes;
-
+        
         public NHLGameGrabber Grabber { get { return gameGrabber; } }
         public Dictionary<int, DateTime> UpdateTimes { get { return gameUpdateTimes; } }
 
@@ -43,32 +44,41 @@ namespace GameTime.Core.NHL
             for (int i = 0; i < gameGrabber.Games.Length; i++)
             {
                 if (gameGrabber.Games[i].Id == id)
+                {
+                    Debug.WriteLine("Found id");
                     matchingGame = gameGrabber.Games[i];
+                }
             }
             return matchingGame;
         }
         private void Pulse(object sender, ElapsedEventArgs e)
         {
+            Debug.WriteLine("Pulsing");
             gameGrabber.UpdateGames();
             if (gameGrabber.Games.Length > 0)
             {
                 foreach (int id in gameUpdateTimes.Keys)
                 {
                     Game game = IdMatch(id);
+                    Debug.WriteLine(game.ToString());
                     if (game != null)
                     {
                         if (game.LastUpdate != gameUpdateTimes[id] && game.LastUpdate > gameUpdateTimes[id])
                         {
+                            Debug.WriteLine("Attempting to modify");
                             gameUpdateTimes[id] = game.LastUpdate;
+                            Debug.WriteLine("Success");
                             if (GameUpdated != null)
                                 GameUpdated.Invoke(game);
                         }
                     }
                 }
+
             }
         }
         public void Begin()
         {
+            gameGrabber.UpdateGames();
             monitorTimer.Start();
         }
         public void End()
@@ -77,8 +87,22 @@ namespace GameTime.Core.NHL
         }
         public void Watch(int id)
         {
-            if (gameUpdateTimes.ContainsKey(id))
+            if (!gameUpdateTimes.ContainsKey(id))
                 gameUpdateTimes.Add(id, DateTime.MinValue);
+        }
+        public void Watch(string teamName)
+        {
+            if (gameGrabber.Games != null)
+            {
+                foreach (Game game in gameGrabber.Games)
+                {
+                    if (game.AwayTeam.ToString().ToLower() == teamName.ToLower() || game.HomeTeam.ToString().ToLower() == teamName.ToLower())
+                    {
+                        Debug.WriteLine("Found Team: " + teamName);
+                        Watch(game.Id);
+                    }
+                }
+            }
         }
         public void Forget(int id)
         {

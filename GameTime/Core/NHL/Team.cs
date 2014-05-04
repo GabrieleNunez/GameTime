@@ -42,7 +42,7 @@ namespace GameTime.Core.NHL
 
         public override string ToString()
         {
-            return Abbreviation;
+            return Name;
         }
     }
 }

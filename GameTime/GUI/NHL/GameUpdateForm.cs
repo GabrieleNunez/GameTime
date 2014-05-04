@@ -1,4 +1,5 @@
 ﻿using GameTime.Controls;
+using GameTime.Core.NHL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,18 +12,42 @@ using System.Windows.Forms;
 
 namespace GameTime.GUI.NHL
 {
+    
     public partial class GameUpdateForm : Form
     {
         public NHLGameView GameView { get { return nhlGameView1; } }
 
+        public event EventHandler Timeout;
         private LinearGradientBrush gradientBrush;
+
+        private const int DEFAULT_TIMEOUT = 10000;
+
+        public Game Game
+        {
+            get { return nhlGameView1.Game; }
+            set { nhlGameView1.Game = value; }
+        }
 
         public GameUpdateForm()
         {
             InitializeComponent();
             gradientBrush = null;
+            timeoutTimer.Interval = DEFAULT_TIMEOUT;
+            timeoutTimer.Tick += timeoutTimer_Tick;
         }
 
+        private void timeoutTimer_Tick(object sender, EventArgs e)
+        {
+            if (Timeout != null)
+                Timeout.Invoke(this, null);
+            this.Close();
+            timeoutTimer.Stop();
+        }
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            timeoutTimer.Start();
+        }
         private void CreateGradientBrush()
         {
             if(gradientBrush != null)
@@ -46,11 +71,6 @@ namespace GameTime.GUI.NHL
             base.OnPaint(e);
             e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
 
-        }
-        protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            base.OnPaintBackground(e);
-            
         }
     }
 }

@@ -30,8 +30,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.controlBar1 = new GameTime.Controls.ControlBar();
             this.nhlGameView1 = new GameTime.Controls.NHLGameView();
+            this.timeoutTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // controlBar1
@@ -74,5 +76,6 @@
 
         private Controls.NHLGameView nhlGameView1;
         private Controls.ControlBar controlBar1;
+        private System.Windows.Forms.Timer timeoutTimer;
     }
 }
