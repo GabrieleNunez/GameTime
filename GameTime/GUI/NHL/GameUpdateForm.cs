@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GameTime.Forms.NHL
+namespace GameTime.GUI.NHL
 {
     public partial class GameUpdateForm : Form
     {

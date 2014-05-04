@@ -7,12 +7,11 @@ namespace GameTime.Core.NHL
     public class NHLGameGrabber : GameGrabber
     {
         private Game[] games;
-        
+
         public Game[] Games
         {
             get { return games; }
         }
-
         public NHLGameGrabber()
             : base("nhl")
         {

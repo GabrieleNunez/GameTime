@@ -13,7 +13,8 @@ namespace GameTime
 {
     public partial class GameTimeForm : Form
     {
-        NHLGameGrabber nhlGrabber;
+        private NHLGameGrabber nhlGrabber;
+
         public GameTimeForm()
         {
             InitializeComponent();
@@ -22,14 +23,7 @@ namespace GameTime
 
         private void GameTimeForm_Load(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
-            nhlGrabber.UpdateGames();
-            foreach (Game game in nhlGrabber.Games)
-            {
-                NHLGameView gameView = new NHLGameView(game);
-                flowLayoutPanel1.Controls.Add(gameView);
-            }
-            this.Cursor = Cursors.Arrow;
+            
         }    
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace GameTime.Forms.NHL
+﻿namespace GameTime.GUI.NHL
 {
     partial class GameUpdateForm
     {

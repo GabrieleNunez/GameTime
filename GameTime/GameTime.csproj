@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -66,12 +69,13 @@
     <Compile Include="Core\NHL\League.cs" />
     <Compile Include="Core\NHL\LogoUrls.cs" />
     <Compile Include="Core\NHL\NHLGameGrabber.cs" />
+    <Compile Include="Core\NHL\NHLGameMonitor.cs" />
     <Compile Include="Core\NHL\TeamScore.cs" />
     <Compile Include="Core\GameGrabber.cs" />
-    <Compile Include="Forms\NHL\GameUpdateForm.cs">
+    <Compile Include="GUI\NHL\GameUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NHL\GameUpdateForm.Designer.cs">
+    <Compile Include="GUI\NHL\GameUpdateForm.Designer.cs">
       <DependentUpon>GameUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameTimeForm.cs">
@@ -80,6 +84,7 @@
     <Compile Include="GameTimeForm.Designer.cs">
       <DependentUpon>GameTimeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\NHL\NHLNotificationManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\NHL\Team.cs" />
@@ -90,7 +95,7 @@
     <EmbeddedResource Include="Controls\NHLGameView.resx">
       <DependentUpon>NHLGameView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NHL\GameUpdateForm.resx">
+    <EmbeddedResource Include="GUI\NHL\GameUpdateForm.resx">
       <DependentUpon>GameUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameTimeForm.resx">
