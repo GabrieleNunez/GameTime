@@ -1,6 +1,7 @@
 ﻿using GameTime.Core.NHL;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -18,12 +19,23 @@ namespace GameTime
         [STAThread]
         static void Main()
         {
-            NHLGameMonitor monitor = new NHLGameMonitor();
-            monitor.GameUpdated += monitor_GameUpdated;
-            monitor.Begin();
-            monitor.Watch("Minnesota");
-            Application.Run();
+            string currentWallpaper = DesktopWallpaper.GetCurrentWallpaper();
+            using (NHLGameMonitor monitor = new NHLGameMonitor())
+            {
+                monitor.GameUpdated += monitor_GameUpdated;
+                monitor.Begin();
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                using (NHLSettingsForm form = new NHLSettingsForm(monitor))
+                {
+                    Application.Run(form);
+                }
+            }
+            DesktopWallpaper.Change(currentWallpaper);
         }
+
+       
 
         static void monitor_GameUpdated(Game game)
         {

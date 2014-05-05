@@ -20,7 +20,6 @@ namespace GameTime.Core.NHL
         
         public NHLGameGrabber Grabber { get { return gameGrabber; } }
         public Dictionary<int, DateTime> UpdateTimes { get { return gameUpdateTimes; } }
-        public int WatchingCount { get { return gameUpdateTimes.Values.Count; } }
 
         public bool IsRunning { get { return isRunning; } }
 
@@ -47,15 +46,14 @@ namespace GameTime.Core.NHL
             {
                 if (gameGrabber.Games[i].Id == id)
                 {
-                    Debug.WriteLine("Found id");
                     matchingGame = gameGrabber.Games[i];
+                    break;
                 }
             }
             return matchingGame;
         }
         private void Pulse(object sender, ElapsedEventArgs e)
         {
-            Debug.WriteLine("Pulsing");
             gameGrabber.UpdateGames();
             List<Game> updates = new List<Game>();
             if (gameGrabber.Games.Length > 0)
@@ -65,21 +63,14 @@ namespace GameTime.Core.NHL
                     foreach (int id in gameUpdateTimes.Keys)
                     {
                         Game game = IdMatch(id);
-                        Debug.WriteLine(game.ToString());
                         if (game != null)
                         {
                             if (game.LastUpdate != gameUpdateTimes[id] && game.LastUpdate > gameUpdateTimes[id])
                             {
-                                Debug.WriteLine("Attempting to modify");
                                 updates.Add(game);
-                                Debug.WriteLine("Success");
                             }
                         }
                     }
-                }
-                else
-                {
-                    updates.AddRange(gameGrabber.Games);
                 }
             }
             foreach (Game game in updates)
@@ -105,15 +96,14 @@ namespace GameTime.Core.NHL
             if (!gameUpdateTimes.ContainsKey(id))
                 gameUpdateTimes.Add(id, DateTime.MinValue);
         }
-        public void Watch(string teamName)
+        public void Watch(string  gameName)
         {
             if (gameGrabber.Games != null)
             {
                 foreach (Game game in gameGrabber.Games)
                 {
-                    if (game.AwayTeam.ToString().ToLower() == teamName.ToLower() || game.HomeTeam.ToString().ToLower() == teamName.ToLower())
+                    if (game.ToString().ToLower() == gameName.ToLower())
                     {
-                        Debug.WriteLine("Found Team: " + teamName);
                         Watch(game.Id);
                     }
                 }
@@ -123,6 +113,19 @@ namespace GameTime.Core.NHL
         {
             if (gameUpdateTimes.ContainsKey(id))
                 gameUpdateTimes.Remove(id);
+        }
+        public void Forget(string gameName)
+        {
+            if (gameGrabber.Games != null)
+            {
+                foreach (Game game in gameGrabber.Games)
+                {
+                    if (game.ToString().ToLower() == gameName.ToLower())
+                    {
+                        Forget(game.Id);
+                    }
+                }
+            }
         }
         public void Dispose()
         {

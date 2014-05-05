@@ -8,7 +8,7 @@ namespace GameTime.Core.NHL
     public class NHLGameGrabber : GameGrabber
     {
         private Game[] games;
-
+        public event EventHandler Updated;
         public Game[] Games
         {
             get { return games; }
@@ -35,6 +35,8 @@ namespace GameTime.Core.NHL
                     throw new Exception("Failed to deserialize", ex);
                 }
             }
+            if (games != null && Updated != null)
+                Updated.Invoke(this, null);
         }
     }
 }

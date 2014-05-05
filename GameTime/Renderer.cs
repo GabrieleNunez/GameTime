@@ -18,7 +18,6 @@ namespace GameTime
 
         public static void RenderScore(string path,Game game)
         {
-            Debug.WriteLine("Trying to render");
             using (Bitmap bitmap = new Bitmap(DEFAULT_WIDTH, DEFAULT_HEIGHT))
             {
                 using (Graphics graphics = Graphics.FromImage(bitmap))
@@ -80,7 +79,6 @@ namespace GameTime
                         }
                     }
                     bitmap.Save(path, ImageFormat.Bmp);
-                    Debug.WriteLine("Done!");
                 }
             }
         }
