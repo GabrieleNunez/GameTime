@@ -73,7 +73,7 @@ namespace GameTime
                                 size = graphics.MeasureString(awayScore, font);
                                 point.X = awayLogoX + (awayLogo.Width / 2);
                                 point.Y = awayLogoY + (awayLogo.Height) + 100;
-                                graphics.DrawString(homeScore, font, brush, point);
+                                graphics.DrawString(awayScore, font, brush, point);
 
                             }
                         }
