@@ -36,17 +36,16 @@ namespace GameTime
                         PointF imgPoint = new PointF();
                         int centerX = (DEFAULT_WIDTH / 2);
                         int centerY = (DEFAULT_HEIGHT / 2);
-                        int homeLogoX = (centerX - (homeLogo.Width / 2)) - homeLogo.Width;
+                        int homeLogoX = (centerX - (homeLogo.Width / 2)) + homeLogo.Width;
                         int homeLogoY = (centerY - (homeLogo.Height / 2));
                         imgPoint.X = homeLogoX;
                         imgPoint.Y = homeLogoY;
                         graphics.DrawImage(homeLogo, imgPoint);
 
-                        int awayLogoX = (centerX - (awayLogo.Width / 2)) + awayLogo.Width;
+                        int awayLogoX = (centerX - (awayLogo.Width / 2)) - awayLogo.Width;
                         int awayLogoY = (centerY - (awayLogo.Height / 2));
                         imgPoint.X = awayLogoX;
                         imgPoint.Y = awayLogoY;
-
                         graphics.DrawImage(awayLogo, imgPoint);
                         using (Font font = new Font("Impact", 50.0f, FontStyle.Regular))
                         {

@@ -80,7 +80,7 @@ namespace GameTime.Core.NHL
         }
         public override string ToString()
         {
-            return string.Format("{0} vs {1}", HomeTeam, AwayTeam);
+            return string.Format("{0} vs {1}", AwayTeam, HomeTeam);
         }
     }
 }

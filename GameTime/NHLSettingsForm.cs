@@ -36,17 +36,17 @@ namespace GameTime
         }
         private void AdjustGameList(Game[] games)
         {
-            for (int i = 0; i < gamesToolStripMenuItem.DropDownItems.Count; i++)
-                gamesToolStripMenuItem.DropDownItems[i].Dispose();
-
-            gamesToolStripMenuItem.DropDownItems.Clear();
             foreach (Game game in games)
             {
-                ToolStripMenuItem item = new ToolStripMenuItem();
-                item.Text = game.ToString();
-                item.CheckOnClick = true;
-                item.CheckedChanged += item_CheckedChanged;
-                gamesToolStripMenuItem.DropDownItems.Add(item);
+                if (!gamesToolStripMenuItem.DropDownItems.ContainsKey(game.ToString()))
+                {
+                    ToolStripMenuItem item = new ToolStripMenuItem();
+                    item.Text = game.ToString();
+                    item.CheckOnClick = true;
+                    item.CheckedChanged += item_CheckedChanged;
+                    item.Name = game.ToString();
+                    gamesToolStripMenuItem.DropDownItems.Add(item);
+                }
             }
         }
 

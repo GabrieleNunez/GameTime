@@ -11,7 +11,7 @@ namespace GameTime.Core.NHL
 
     public class NHLGameMonitor : IDisposable
     {
-        private const int DEFAULT_INTERVAL = 10000;
+        private const int DEFAULT_INTERVAL = 1000;
 
         private bool isRunning = false;
         private Timer monitorTimer;
