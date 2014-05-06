@@ -54,6 +54,7 @@ namespace GameTime.Core.NHL
         }
         private void Pulse(object sender, ElapsedEventArgs e)
         {
+            
             gameGrabber.UpdateGames();
             List<Game> updates = new List<Game>();
             if (gameGrabber.Games.Length > 0)
@@ -65,7 +66,8 @@ namespace GameTime.Core.NHL
                         Game game = IdMatch(id);
                         if (game != null)
                         {
-                            if (game.LastUpdate != gameUpdateTimes[id] && game.LastUpdate > gameUpdateTimes[id])
+                            if (game.LastUpdate != gameUpdateTimes[id] || game.LastUpdate > gameUpdateTimes[id] ||
+                                game.BoxScore.LastUpdate > gameUpdateTimes[id])
                             {
                                 updates.Add(game);
                             }
@@ -75,7 +77,7 @@ namespace GameTime.Core.NHL
             }
             foreach (Game game in updates)
             {
-                gameUpdateTimes[game.Id] = game.LastUpdate;
+                gameUpdateTimes[game.Id] = game.BoxScore.LastUpdate;
                 if (GameUpdated != null)
                     GameUpdated.Invoke(game);
             }
