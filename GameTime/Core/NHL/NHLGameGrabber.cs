@@ -28,7 +28,6 @@ namespace GameTime.Core.NHL
                 try
                 {
                     games = JsonConvert.DeserializeObject<Game[]>(json);
-                    Debug.WriteLine("Converted Games");
                 }
                 catch (Newtonsoft.Json.JsonSerializationException ex)
                 {

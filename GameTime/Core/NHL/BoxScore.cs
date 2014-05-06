@@ -15,16 +15,16 @@ namespace GameTime.Core.NHL
         public DateTime LastUpdate { get; set; }
 
         [JsonProperty("away_strength", NullValueHandling = NullValueHandling.Ignore)]
-        public int AwayStrength { get; set; }
+        public string AwayStrength { get; set; }
 
         [JsonProperty("away_strength_type", NullValueHandling = NullValueHandling.Ignore)]
         public string AwayStrengthType { get; set; }
 
         [JsonProperty("home_strength", NullValueHandling = NullValueHandling.Ignore)]
-        public int HomeStrength { get; set; }
+        public string HomeStrength { get; set; }
 
         [JsonProperty("home_strength_type", NullValueHandling = NullValueHandling.Ignore)]
-        public int HomeStrengthType { get; set; }
+        public string HomeStrengthType { get; set; }
 
         [JsonProperty("team_on_power_play", NullValueHandling = NullValueHandling.Ignore)]
         public string PowerPlayTeam { get; set; }
