@@ -11,12 +11,29 @@ using System.Windows.Forms;
 
 namespace GameTime
 {
+    /// <summary>
+    /// Renderer will take  any Game class and render it visually
+    /// <remarks>
+    /// Only supports NHL.Game at the moment
+    /// </remarks>
+    /// </summary>
     public static class Renderer
     {
+        /// <summary>
+        /// Default Width for our resolution
+        /// </summary>
         private const int DEFAULT_WIDTH = 1920;
+        /// <summary>
+        /// Default Height for our resolution
+        /// </summary>
         private const int DEFAULT_HEIGHT = 1080;
 
-        public static void RenderScore(string path,Game game)
+        /// <summary>
+        /// Renders the data from the Game object visually into a Bitmap object and then saves it
+        /// </summary>
+        /// <param name="path">The path to save the bitmap</param>
+        /// <param name="game">The Game object that has all the data we need to render</param>
+        public static void RenderGame(string path,Game game)
         {
             using (Bitmap bitmap = new Bitmap(DEFAULT_WIDTH, DEFAULT_HEIGHT))
             {
@@ -31,7 +48,7 @@ namespace GameTime
                     graphics.Clear(Color.Black);
 
                     using (Image homeLogo = Util.DownloadImage(game.HomeTeam.Logo.Large),
-                                awayLogo = Util.DownloadImage(game.AwayTeam.Logo.Large))
+                                 awayLogo = Util.DownloadImage(game.AwayTeam.Logo.Large))
                     {
                         PointF imgPoint = new PointF();
                         int centerX = (DEFAULT_WIDTH / 2);

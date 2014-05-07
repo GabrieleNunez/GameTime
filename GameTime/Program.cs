@@ -40,7 +40,7 @@ namespace GameTime
         static void monitor_GameUpdated(Game game)
         {
             string path = Path.Combine(Application.StartupPath,string.Format("{0}.bmp", game.ToString()));
-            Renderer.RenderScore(path,game);
+            Renderer.RenderGame(path,game);
             DesktopWallpaper.Change(path);
         }
     }
