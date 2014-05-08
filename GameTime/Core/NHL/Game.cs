@@ -2,6 +2,9 @@
 using System;
 namespace GameTime.Core.NHL
 {
+    /// <summary>
+    /// Represents a game of NHL Hockey
+    /// </summary>
     public class Game
     {
         [JsonProperty("game_date", NullValueHandling = NullValueHandling.Ignore)]
@@ -49,21 +52,40 @@ namespace GameTime.Core.NHL
         [JsonProperty("box_score", NullValueHandling = NullValueHandling.Ignore)]
         public BoxScore BoxScore { get; set; }
 
+        /// <summary>
+        /// Converts a string to an id
+        /// </summary>
+        /// <param name="team">The team resource url</param>
+        /// <returns>The id of the team</returns>
         private int StringToId(string team)
         {
             string[] splits = team.Split('/');
             int id = int.Parse(splits[splits.Length - 1]);
             return id;
         }
+        /// <summary>
+        /// Matches the team thats playing in the game to the specified id
+        /// </summary>
+        /// <param name="id">ID of the team we want to check for</param>
+        /// <returns>The matching team</returns>
         private Team MatchTeam(int id)
         {
             return id == HomeTeam.Id ? HomeTeam : AwayTeam;
         }
+        /// <summary>
+        /// Matches the team from the provided string
+        /// </summary>
+        /// <param name="team">The name of the team</param>
+        /// <returns>The matching team</returns>
         private Team MatchTeam(string team)
         {
             int id = StringToId(team);
             return MatchTeam(id);
         }
+        /// <summary>
+        /// Gets the team that is winning
+        /// </summary>
+        /// <returns>The winning team</returns>
         public Team GetWinningTeam()
         {
             if (BoxScore.Score.IsTie)
@@ -71,6 +93,10 @@ namespace GameTime.Core.NHL
             else
                 return MatchTeam(BoxScore.Score.WinningTeam);
         }
+        /// <summary>
+        /// Gets the team that is losing
+        /// </summary>
+        /// <returns>The losing team</returns>
         public Team GetLosingTeam()
         {
             if (BoxScore.Score.IsTie)
@@ -78,6 +104,10 @@ namespace GameTime.Core.NHL
             else
                 return MatchTeam(BoxScore.Score.LosingTeam);
         }
+        /// <summary>
+        /// A formatted string that represents the game
+        /// </summary>
+        /// <returns> (Away Team) vs (Home Team)</returns>
         public override string ToString()
         {
             return string.Format("{0} vs {1}", AwayTeam, HomeTeam);
